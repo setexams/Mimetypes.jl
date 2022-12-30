@@ -3,6 +3,9 @@
 # Installing
 ```
 pkg> add https://setexams.com/Mimetypes.jl
+---
+julia> Pkg.add("https://setexams.com/Mimetypes.jl")
+
 ```
 Convert extensions to mimetypes and mimetypes to extensions in Julia
 
