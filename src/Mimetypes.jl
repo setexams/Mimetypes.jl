@@ -1,19 +1,49 @@
+"""
+Get Mimetypes from file extensions and filenames {filepaths}
+"""
 module Mimetypes
 
+"""
+Get a mimetype from an extension
+```
+julia> Mimetype.mimetype("png")
+"image/png"
+
+```
+"""
 function mimetype(ext)
 	get(ext2mime, ext, "application/octet-stream")
 end
 
+"""
+Get an extension from a mimetype
+```
+julia> Mimetype.extension("image/png")
+"png"
+
+```
+"""
 function extension(mimetype)
 	mime2ext = Dict(value => key for (key, value) in ext2mime)
 	get(mime2ext, mimetype, "unknown")
 end
 
+"""
+Get a mimetype from filename/filepath
+```
+julia> Mimetype.mimetype_from_filename("/home/user/test.png")
+"image/png"
+
+```
+"""
 function mimetype_from_filename(filepath)
 	(_, extension) = splitext(filepath)
 	Mimetypes.mimetype(replace(extension, "."=>""))
 end
 
+"""
+A Dict of some of the mimetypes in the form Dict("extension" => Mimetype,...)
+"""
 ext2mime = Dict(
 	"123"=> "application/vnd.lotus-1-2-3",
 	"1km"=> "application/vnd.1000minds.decision-model+xml",

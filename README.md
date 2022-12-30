@@ -16,4 +16,12 @@ julia> Mimetypes.extension("image/png")
 julia> Mimetypes.mimetype("png")
 "image/png"
 
+julia Mimetypes.mimetype_from_filename("/home/user/test.png")
+"image/png"
+
+```
+
+# Removing
+```
+pkg> rm Mimetypes
 ```
